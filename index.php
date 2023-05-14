@@ -1,3 +1,27 @@
+<?php
+$conn = mysqli_connect
+('localhost', 'root','', 'contact-form')
+or die ('connection failed');
+
+if(isset($_post['submit'])) {
+$name = mysqli_real_escape_string($conn, $_post['name']);
+$email = mysqli_real_escape_string($conn, $_post['email']);
+$number = $_post['number'];
+$date$ = _post['date'];
+
+$insert = mysqli_query($conn, "INSERT INTO 'contact-form'(name,email,number,date) VALUES ('$name','$email','$number','$date'));
+or die ('query failed');
+}
+if ($insert) {
+$message[]= 'appointement made successfully';
+}else{
+   $message[]= 'appointement failed'; 
+    }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +37,7 @@
 
 <body>
 
-    <!-- header section starts -->
+    //  header section starts 
 
     <header class="header">
         <a href="#" class="logo"> <i class="fas fas fa-heartbeat"></i> <strong>WC</strong>medical</a>
@@ -29,7 +53,7 @@
         <div id="menu-btn" class="fas fa-bars"></div>
 
     </header>
-    <!-- header section end -->
+    // <!-- header section end -->
 
 
     <section class="home" id="home">
@@ -45,9 +69,9 @@
 
     </section>
 
-    <!-- home section starts -->
+    // home section starts //
 
-    <!-- icon section starts -->
+    //icon section starts //
 
     <section class="icons-container">
         <div class="icons">
@@ -82,9 +106,9 @@
 
     </section>
 
-    <!-- icon section ends -->
+    // <!-- icon section ends -->
 
-    <!-- about section starts -->
+    // <!-- about section starts -->
 
     <section class="about" id="about">
         <h2 class="heading"> <span>About us</span></h2>
@@ -152,9 +176,9 @@
 
     </section>
 
-    <!-- services section ends -->
+    //  services section ends //
 
-    <!-- doctors section start -->
+    //  doctors section start //
 
     <section class="doctors" id="doctors">
         <h2 class="heading"> Our <span>Doctors</span></h2>
@@ -261,9 +285,9 @@
 
         </div>
     </section>
-    <!-- doctors section end -->
+    //  doctors section end
 
-    <!-- appointmening section start -->
+    // appointmening section start 
 
     <section class="appointment" id="appointment">
         <h2 class="heading"> <span>Appointment</span> now </h2>
@@ -272,7 +296,14 @@
                 <img src="./images/appointment-img.svg" alt="">
 
             </div>
-            <form action="" method="post">
+            <form action="<?php echo $_SERVEUR['PHP_SELF'];?>" method="post">
+            <?php
+            if(isset($message)) {
+                foreach($message as $message){
+                echo'<p class ="message">'.$message.'</p>';
+}
+}
+            ?>
                 <h3>Make appointment</h3>
                 <input type="name" name="" placeholder="your name" class="box">
                 <input type="number" name="number" placeholder="your number" class="box">
@@ -283,9 +314,9 @@
         </div>
     </section>
 
-    <!-- appointmening section ends -->
+    // <!-- appointmening section ends -->
 
-    <!-- review section starts -->
+    // <!-- review section starts -->
     <section class="review" id="review">
         <h2 class="heading"> Client's <span>Review</span></h2>
         <div class="box-container">
@@ -334,9 +365,9 @@
         </div>
     </section>
 
-    <!-- review section ends -->
+    // <!-- review section ends -->
 
-    <!-- blogs section starts -->
+    // <!-- blogs section starts -->
 
     <section class="blogs" id="blogs">
         <h1 class="heading"> Our <span>Blogs</span> </h1>
@@ -429,8 +460,8 @@
         </div>
     </section>
 
-    <!-- blogs section ends -->
-    <!-- footer section starts -->
+    // <!-- blogs section ends -->
+    // <!-- footer section starts -->
 
     <section class="footer">
         <div class="box-container">
@@ -475,9 +506,9 @@
         <div class="credit">Createb by <span>win coder</span> | all rights reserved </div>
 
     </section>
-    <?php
+    
 
-    <!-- footer section ends -->
+    // <!-- footer section ends -->
 
 </body>
 
